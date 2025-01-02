@@ -11,7 +11,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.navdrawer.databinding.ActivityMainBinding
 
@@ -22,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var drawerLayout: DrawerLayout
     lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     lateinit var appBarConfiguration:AppBarConfiguration
-    lateinit var menu: Unit
+//    lateinit var menu: Unit
     lateinit var navController: NavController
 
 
@@ -42,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
 //        setupActionBar()
-        actionBarDrawerToggle.syncState()//set automatically and sync wheter open or not
+        actionBarDrawerToggle.syncState()//set automatically and sync whether drawer open or not
         appBarConfiguration = AppBarConfiguration(navController.graph,drawerLayout)
         setupActionBarWithNavController(navController,appBarConfiguration)
 // Update drawer lock mode and toggle(shows) icon based on navigation destination
@@ -87,7 +86,7 @@ class MainActivity : AppCompatActivity() {
     }
 //  ensure the proper back navigation using NavigationUI.navigateUp().
     override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp()
+        return  super.onSupportNavigateUp()|| navController.popBackStack()
     }
 
 }
